@@ -10,3 +10,16 @@
    -ms-overflow-style: none;  
    scrollbar-width: none;  
 }
+
+.aspect-ratio-box {
+   width: 100%;
+   aspect-ratio: 1 / 1;
+   overflow: hidden;
+   border-radius: 0.5rem; /* This sets the rounded corners */
+ }
+
+ .aspect-ratio-box img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+ }

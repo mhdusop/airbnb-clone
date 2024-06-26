@@ -38,11 +38,9 @@ export const CardImage = ({ images }) => {
             <GoUpload />
           </div>
         </div>
-        <img
-          src={images[0]}
-          alt="Single Image"
-          className="w-full h-64 object-cover rounded-lg"
-        />
+        <div className="aspect-ratio-box">
+          <img src={images[0]} alt="Single Image" />
+        </div>
       </>
     );
   }
@@ -51,11 +49,9 @@ export const CardImage = ({ images }) => {
     <Slider {...settings}>
       {images.map((image, index) => (
         <div key={index}>
-          <img
-            src={image}
-            alt={`Slide ${index}`}
-            className="w-full h-64 object-cover rounded-lg"
-          />
+          <div className="aspect-ratio-box">
+            <img src={image} alt={`Slide ${index}`} />
+          </div>
           <div className="w-full flex justify-end">
             <div className="rounded-full bg-slate-200 absolute z-10 p-2 top-3 mr-3">
               <GoUpload />

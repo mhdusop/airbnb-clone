@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { CardImage } from "./CardImage";
 import { CardTitle } from "./CardTitle";
-import cardData from "../../data/cardData";
+import cardData from "../../data/cards/cardData.js";
 
 export const Card = () => {
   return (

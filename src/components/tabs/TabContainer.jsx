@@ -1,12 +1,22 @@
 import { useState } from "react";
 import Tab from "./Tab";
 import TabPanel from "./TabPanel";
+import { populerLocations } from "../../data/tabs/populerLocation.js";
+import { seniBudayaLocations } from "../../data/tabs/seniBudayaLocation.js";
+import { alamTerbukaLocations } from "../../data/tabs/alamTerbukaLocation.js";
+import { pegununganLocations } from "../../data/tabs/pegununganLocation.js";
+import { pantaiLocations } from "../../data/tabs/pantaiLocation.js";
 
 const TabContainer = () => {
-  const [activeTab, setActiveTab] = useState("profile");
+  const [activeTab, setActiveTab] = useState("populer");
+  const [showMore, setShowMore] = useState(false);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+
+  const toggleShowMore = () => {
+    setShowMore(!showMore);
   };
 
   return (
@@ -18,59 +28,182 @@ const TabContainer = () => {
           role="tablist"
         >
           <Tab
-            id="profile-tab"
-            target="profile"
-            label="Profile"
+            id="populer-tab"
+            target="populer"
+            label="Populer"
             activeTab={activeTab}
-            onClick={() => handleTabClick("profile")}
+            onClick={() => handleTabClick("populer")}
           />
           <Tab
-            id="dashboard-tab"
-            target="dashboard"
-            label="Dashboard"
+            id="seni-tab"
+            target="seni"
+            label="Seni & Budaya"
             activeTab={activeTab}
-            onClick={() => handleTabClick("dashboard")}
+            onClick={() => handleTabClick("seni")}
           />
           <Tab
-            id="settings-tab"
-            target="settings"
-            label="Settings"
+            id="alam-tab"
+            target="alam"
+            label="Alam Terbuka"
             activeTab={activeTab}
-            onClick={() => handleTabClick("settings")}
+            onClick={() => handleTabClick("alam")}
           />
           <Tab
-            id="contacts-tab"
-            target="contacts"
-            label="Contacts"
+            id="pengunungan-tab"
+            target="pengunungan"
+            label="Pegunungan"
             activeTab={activeTab}
-            onClick={() => handleTabClick("contacts")}
+            onClick={() => handleTabClick("pengunungan")}
+          />
+          <Tab
+            id="pantai-tab"
+            target="pantai"
+            label="Pantai"
+            activeTab={activeTab}
+            onClick={() => handleTabClick("pantai")}
           />
         </ul>
       </div>
       <div id="default-tab-content">
         <TabPanel
-          id="profile"
+          id="populer"
           activeTab={activeTab}
-          tabId="profile"
-          content="This is some placeholder content for the Profile tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling."
+          tabId="populer"
+          content={
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-2 gap-4">
+                {populerLocations
+                  .slice(0, showMore ? populerLocations.length : 18)
+                  .map((location, index) => (
+                    <div key={index}>
+                      <div className="font-semibold text-gray-800">
+                        {location.name}
+                      </div>
+                      <div className="text-gray-400 font-sm truncate overflow-hidden whitespace-nowrap text-ellipsis">
+                        {location.type}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <button className="mt-4 text-blue-500" onClick={toggleShowMore}>
+                {showMore
+                  ? "Tampilkan lebih sedikit"
+                  : "Tampilkan lebih banyak"}
+              </button>
+            </>
+          }
         />
         <TabPanel
-          id="dashboard"
+          id="seni"
           activeTab={activeTab}
-          tabId="dashboard"
-          content="This is some placeholder content for the Dashboard tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling."
+          tabId="seni"
+          content={
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-2 gap-4">
+                {seniBudayaLocations
+                  .slice(0, showMore ? seniBudayaLocations.length : 18)
+                  .map((location, index) => (
+                    <div key={index}>
+                      <div className="font-semibold text-gray-800">
+                        {location.name}
+                      </div>
+                      <div className="text-gray-400 font-sm truncate overflow-hidden whitespace-nowrap text-ellipsis">
+                        {location.type}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <button className="mt-4 text-blue-500" onClick={toggleShowMore}>
+                {showMore
+                  ? "Tampilkan lebih sedikit"
+                  : "Tampilkan lebih banyak"}
+              </button>
+            </>
+          }
         />
         <TabPanel
-          id="settings"
+          id="alam"
           activeTab={activeTab}
-          tabId="settings"
-          content="This is some placeholder content for the Settings tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling."
+          tabId="alam"
+          content={
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-2 gap-4">
+                {alamTerbukaLocations
+                  .slice(0, showMore ? alamTerbukaLocations.length : 18)
+                  .map((location, index) => (
+                    <div key={index}>
+                      <div className="font-semibold text-gray-800">
+                        {location.name}
+                      </div>
+                      <div className="text-gray-400 font-sm truncate overflow-hidden whitespace-nowrap text-ellipsis">
+                        {location.type}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <button className="mt-4 text-blue-500" onClick={toggleShowMore}>
+                {showMore
+                  ? "Tampilkan lebih sedikit"
+                  : "Tampilkan lebih banyak"}
+              </button>
+            </>
+          }
         />
         <TabPanel
-          id="contacts"
+          id="pengunungan"
           activeTab={activeTab}
-          tabId="contacts"
-          content="This is some placeholder content for the Contacts tab's associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling."
+          tabId="pengunungan"
+          content={
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-2 gap-4">
+                {pegununganLocations
+                  .slice(0, showMore ? pegununganLocations.length : 18)
+                  .map((location, index) => (
+                    <div key={index}>
+                      <div className="font-semibold text-gray-800">
+                        {location.name}
+                      </div>
+                      <div className="text-gray-400 font-sm truncate overflow-hidden whitespace-nowrap text-ellipsis">
+                        {location.type}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <button className="mt-4 text-blue-500" onClick={toggleShowMore}>
+                {showMore
+                  ? "Tampilkan lebih sedikit"
+                  : "Tampilkan lebih banyak"}
+              </button>
+            </>
+          }
+        />
+        <TabPanel
+          id="pantai"
+          activeTab={activeTab}
+          tabId="pantai"
+          content={
+            <>
+              <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-2 gap-4">
+                {pantaiLocations
+                  .slice(0, showMore ? pantaiLocations.length : 18)
+                  .map((location, index) => (
+                    <div key={index}>
+                      <div className="font-semibold text-gray-800">
+                        {location.name}
+                      </div>
+                      <div className="text-gray-400 font-sm truncate overflow-hidden whitespace-nowrap text-ellipsis">
+                        {location.type}
+                      </div>
+                    </div>
+                  ))}
+              </div>
+              <button className="mt-4 text-blue-500" onClick={toggleShowMore}>
+                {showMore
+                  ? "Tampilkan lebih sedikit"
+                  : "Tampilkan lebih banyak"}
+              </button>
+            </>
+          }
         />
       </div>
     </>

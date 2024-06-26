@@ -2,9 +2,7 @@
 const TabPanel = ({ id, activeTab, tabId, content }) => {
   return (
     <div
-      className={`p-4 rounded-lg bg-gray-50 ${
-        activeTab === tabId ? "block" : "hidden"
-      }`}
+      className={`py-3 rounded-lg ${activeTab === tabId ? "block" : "hidden"}`}
       id={id}
       role="tabpanel"
       aria-labelledby={`${tabId}-tab`}
